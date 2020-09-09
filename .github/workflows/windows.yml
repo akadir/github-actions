@@ -1,4 +1,4 @@
-name: windows builds
+name: build on windows
 on: [ push ]
 
 jobs:
