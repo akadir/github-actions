@@ -16,7 +16,7 @@ jobs:
         run: mvn test
 
   matrix-build:
-    needs: windows_matrix_build_test
+    needs: windows_build_test
     runs-on: macos-latest
     strategy:
       fail-fast: false

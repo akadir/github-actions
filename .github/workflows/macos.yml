@@ -16,13 +16,13 @@ jobs:
         run: mvn test
 
   matrix-build:
-    needs: macos_matrix_build_test
+    needs: macos_build_test
     runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
         java: [ 9, 11, 14]
-    name: Java ${{ matrix.java }} on ${{ RUNNER_OS }} build
+    name: Java ${{ matrix.java }} on $RUNNER_OS build
     steps:
       - uses: actions/checkout@v2
       - name: Setup java
