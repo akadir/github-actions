@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         java: [ 9, 11, 14]
-    name: Java ${{ matrix.java }} on ${{ RUNNER_OS }} build
+    name: Java ${{ matrix.java }} on $RUNNER_OS build
     steps:
       - uses: actions/checkout@v2
       - name: Setup java
