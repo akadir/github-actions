@@ -3,7 +3,6 @@ on: [push]
 
 jobs:
   matrix-build:
-    needs: build
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
