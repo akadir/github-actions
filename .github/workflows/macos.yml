@@ -8,7 +8,7 @@ jobs:
       fail-fast: false
       matrix:
         java: [ 8, 9, 11, 14]
-    name: Java ${{ matrix.java }} on ${{ OS_NAME }} build
+    name: Java ${{ matrix.java }} on macos build
     steps:
       - uses: actions/checkout@v2
       - name: Setup java
@@ -19,5 +19,3 @@ jobs:
         run: mvn -DskipTests package
       - name: Test
         run: mvn test
-      env:
-        OS_NAME: $RUNNER_OS
