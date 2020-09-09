@@ -15,7 +15,7 @@ jobs:
       - name: Test
         run: mvn test
       - uses: codecov/codecov-action@v1
-        - bash <(curl -s https://codecov.io/bash)
+        run: bash <(curl -s https://codecov.io/bash)
       - uses: actions/setup-java@v1
         with:
           java-version: 11
