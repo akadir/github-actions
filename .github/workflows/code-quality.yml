@@ -1,3 +1,4 @@
+name: check code quality
 on: [ push ]
 
 jobs:
