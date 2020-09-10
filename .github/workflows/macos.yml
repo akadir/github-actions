@@ -1,12 +1,14 @@
 name: build on macos
 on:
   push:
+    branches:
+      - '**'
     paths:
       - 'src/**'
       - 'pom.xml'
       - '.github/**'
     tags-ignore:
-      - '/**'
+      - '**'
 
 jobs:
   matrix-build:
