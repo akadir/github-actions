@@ -2,11 +2,11 @@ name: check code quality
 on:
   push:
     paths:
-      - 'src/'
+      - 'src/**'
       - 'pom.xml'
-      - '.github/'
+      - '.github/**'
     tags-ignore:
-      - '*'
+      - '**'
 
 jobs:
   sonarqube:
