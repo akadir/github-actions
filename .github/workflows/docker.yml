@@ -34,7 +34,8 @@ jobs:
     needs: [ build, test ]
     env:
       REPO: ${{ secrets.DOCKER_REPO }}
-
+      USER: ${{ secrets.DOCKER_USER }}
+      PASS: ${{ secrets.DOCKER_PASS }}
     steps:
       - uses: actions/checkout@v1
       - uses: actions/download-artifact@master
@@ -42,7 +43,7 @@ jobs:
           name: github-actions-jar
           path: target/github-actions*.jar
       - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+        run: docker login -u $USER -p $PASS
       - name: Build Docker image
         run: docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} .
       - name: Publish Docker image
