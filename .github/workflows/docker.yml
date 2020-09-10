@@ -1,5 +1,8 @@
 name: push docker image
-on: [ push ]
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   build-test:
@@ -36,6 +39,6 @@ jobs:
       - name: Set APP_VERSION
         run: echo ::set-env name=APP_VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
       - name: Build Docker image
-        run: docker build -t $REPO:$APP_VERSION -t $REPO:latest .
+        run: docker build -t $REPO:$APP_VERSION .
       - name: Publish Docker image
         run: docker push $REPO

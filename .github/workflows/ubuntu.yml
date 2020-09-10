@@ -1,5 +1,12 @@
 name: build on ubuntu
-on: [ push ]
+on:
+  push:
+    paths:
+      - 'src'
+      - 'pom.xml'
+      - '.github'
+    tags-ignore:
+      - '*'
 
 jobs:
   matrix-build:
