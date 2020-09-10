@@ -12,8 +12,6 @@ jobs:
           java-version: 8
       - name: Build with Maven
         run: mvn package
-      - name: Set APP_VERSION
-        run: echo ::set-env name=APP_VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
       - uses: actions/upload-artifact@master
         with:
           name: github-actions-jar
@@ -35,6 +33,8 @@ jobs:
           path: target/github-actions*.jar
       - name: Login to Docker Hub
         run: docker login -u $USER -p $PASS
+      - name: Set APP_VERSION
+        run: echo ::set-env name=APP_VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
       - name: Build Docker image
         run: docker build -t $REPO:$APP_VERSION -t $REPO:latest .
       - name: Publish Docker image
