@@ -2,8 +2,8 @@ name: push docker image
 on: [ push ]
 
 jobs:
-  build:
-    name: build
+  build-test:
+    name: build and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,27 +11,16 @@ jobs:
         with:
           java-version: 8
       - name: Build with Maven
-        run: mvn -DskipTests package
+        run: mvn package
       - uses: actions/upload-artifact@master
         with:
           name: github-actions-jar
           path: target/github-actions*.jar
 
-  test:
-    name: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
-        with:
-          java-version: 8
-      - name: Test
-        run: mvn test
-
   docker:
     name: Publish - Docker Hub
     runs-on: ubuntu-18.04
-    needs: [ build, test ]
+    needs: [ build-test ]
     env:
       REPO: ${{ secrets.DOCKER_REPO }}
       USER: ${{ secrets.DOCKER_USER }}
