@@ -54,5 +54,8 @@
   </a>
 </div>
 
+---
+On every push:
+
 - Builds java application using maven using different java versions and operating systems.
 - Makes static code analyse with SonarCloud
