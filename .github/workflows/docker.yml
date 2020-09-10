@@ -1,8 +1,5 @@
 name: push docker image
-on:
-  push:
-    tags:
-      - '*'
+on: [ push ]
 
 jobs:
   build-test:
@@ -28,7 +25,6 @@ jobs:
       REPO: ${{ secrets.DOCKER_REPO }}
       USER: ${{ secrets.DOCKER_USER }}
       PASS: ${{ secrets.DOCKER_PASS }}
-      TAG: echo ${{ github.event.release.tag_name }}
     steps:
       - uses: actions/checkout@v1
       - uses: actions/download-artifact@master
@@ -37,7 +33,11 @@ jobs:
           path: target/github-actions*.jar
       - name: Login to Docker Hub
         run: docker login -u $USER -p $PASS
+      - name: Set env
+        run: echo ::set-env name=APP_VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+      - name: Get version
+        run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout
       - name: Build Docker image
-        run: docker build -t $REPO:$TAG .
+        run: docker build -t $REPO:$APP_VERSION .
       - name: Publish Docker image
         run: docker push $REPO
