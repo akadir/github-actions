@@ -1,6 +1,8 @@
 name: build on windows
 on:
   push:
+    branches:
+      - '**'
     paths:
       - 'src/**'
       - 'pom.xml'
