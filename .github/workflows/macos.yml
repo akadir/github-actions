@@ -6,7 +6,7 @@ on:
       - 'pom.xml'
       - '.github/**'
     tags-ignore:
-      - '*'
+      - '/**'
 
 jobs:
   matrix-build:
