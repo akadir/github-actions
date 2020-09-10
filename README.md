@@ -64,7 +64,7 @@
 On every push:
 
 - Builds java application using maven using different java versions and operating systems.
-- Makes static code analyse with SonarCloud
+- Makes static code analysis with [SonarCloud](https://sonarcloud.io/dashboard?id=akadir_github-actions)
 
 On tag events:
 
