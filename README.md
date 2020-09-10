@@ -11,8 +11,14 @@
   <a href="https://github.com/akadir/github-actions/commits" title="Last Commit">
      <img src="https://img.shields.io/github/last-commit/akadir/github-actions?style=flat">
   </a>
+  
+  <!-- Docker Push -->
+  <a href="https://github.com/akadir/github-actions/actions">
+    <img src="https://github.com/akadir/github-actions/workflows/push%20docker%20image/badge.svg"
+      alt="Code Quality Check" />
+  </a>
 
-  <!-- CI -->
+  <!-- Code Quality -->
   <a href="https://github.com/akadir/github-actions/actions">
     <img src="https://github.com/akadir/github-actions/workflows/check%20code%20quality/badge.svg"
       alt="Code Quality Check" />
@@ -59,3 +65,7 @@ On every push:
 
 - Builds java application using maven using different java versions and operating systems.
 - Makes static code analyse with SonarCloud
+
+On tag events:
+
+- Builds docker image and pushes to [the docker hub](https://hub.docker.com/repository/docker/akarakoc/github-actions)
